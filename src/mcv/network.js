@@ -7,28 +7,11 @@ export const serviceData = async (from, to) => {
 	const nextData = await fetchNext(fromCRS, toCRS);
 	const departuresData = await fetchDepartures(fromCRS, toCRS);
 
-	// await Bun.write('./fastest.json'', JSON.stringify(fastestData));
-	// await Bun.write('./next.json', JSON.stringify(nextData));
-	// await Bun.write('./departures.json'', JSON.stringify(departuresData));
-
-	// const fastestFile = Bun.file('./fastest.json', {
-	// 	type: 'application/json',
-	// });
-	// const nextFile = Bun.file('next.json', { type: 'application/json' });
-	// const departuresFile = Bun.file('./departures.json', {
-	// 	type: 'application/json',
-	// });
-	// const fastestData = await fastestFile.json();
-	// const nextData = await nextFile.json();
-	// const departuresData = await departuresFile.json();
-
 	const { nrccMessages, services: departuresDataP } =
 		processDepartureData(departuresData);
 	if (!departuresDataP) return { from, to, services: [] };
 	const fastestDataP = processFastestNextData(fastestData);
 	const nextDataP = processFastestNextData(nextData);
-
-	// console.log(fastestDataP, nextDataP);
 
 	const services = departuresDataP.map((item) => {
 		const checkKeys = ['locationName', 'destination', 'via', 'std'];
@@ -154,7 +137,6 @@ const processDepartureData = (data) => {
 			cancelReason,
 			delayReason,
 		};
-		console.log(departure);
 		services.push(item);
 	}
 

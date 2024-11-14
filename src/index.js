@@ -4,7 +4,14 @@ import {
 	searchStationByCRS,
 	searchStationByTerm,
 } from './mcv/stationSearch.controller.js';
-const app = new Elysia();
+const app = new Elysia({ prefix: '/api' });
+
+app.onTransform(({ body, params, path, request }) => {
+	console.log(`${request.method} ${path}`, {
+		body: body || 'empty',
+		params,
+	});
+});
 
 //check if data is from the correct cors
 //
@@ -23,5 +30,5 @@ app.get('/stations/crs/:crs', ({ params: { crs } }) => {
 app.listen(4000);
 
 console.log(
-	`Bismillah ar-Rahman ar-Raheem\nServer is running at http://${app.server?.hostname}:${app.server?.port}`
+	`Server is running at http://${app.server?.hostname}:${app.server?.port}`
 );
