@@ -8,7 +8,7 @@ If you prefer a Node / Express version checkout [this repo](https://github.com/o
 
 1. Run `bun i`
 
-2. Create a `.env` file in the root directory with the following key and values:
+2. Create a `.env.local` file in the root directory with the following key and values:
 
 ```
 api_key_fastest =
