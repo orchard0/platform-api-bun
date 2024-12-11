@@ -6,7 +6,7 @@
 		"dbSeed": "bun ./db/seeds/run.js",
 		"dbProduction": "NODE_ENV=production bun run dbSeed",
 		"dev": "bun run --watch src/index.js",
-		"start": "bun src/index.js"
+		"start": "NODE_ENV=production bun src/index.js"
 	},
 	"dependencies": {
 		"elysia": "latest",

@@ -8,7 +8,6 @@ const config = {};
 
 if (ENV === 'production') {
 	config.connectionString = process.env.POSTGRES_URL;
-	config.cert = './us-east-1-bundle.pem';
 	// config.ssl = { rejectUnauthorized: false };
 }
 

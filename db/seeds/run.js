@@ -1,9 +1,10 @@
 const seed = require('./seed.js');
-const db = require('../connections.js');
-const data = require('./data/crs.json');
+const db = require('../connection.js');
+const data = require('./data/stations.json');
 
-const runSeed = () => {
-	return seed(data).then(() => db.end());
+const runSeed = async () => {
+	await seed(data);
+	await db.end();
 };
 
 runSeed();

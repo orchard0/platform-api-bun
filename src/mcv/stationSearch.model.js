@@ -1,4 +1,4 @@
-import db from '../../db/connections';
+import db from '../../db/connection';
 import format from 'pg-format';
 
 export const queryStationNames = (slug) => {
