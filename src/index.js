@@ -1,10 +1,17 @@
 import { Elysia } from 'elysia';
+import { cors } from '@elysiajs/cors';
 import { serviceData } from './mcv/network.js';
 import {
 	searchStationByCRS,
 	searchStationByTerm,
 } from './mcv/stationSearch.controller.js';
-const app = new Elysia({ prefix: '/api' });
+const app = new Elysia({ prefix: null });
+
+app.use(
+	cors({
+		origin: process.env.origins,
+	})
+);
 
 app.onTransform(({ body, params, path, request }) => {
 	console.log(`${request.method} ${path}`, {
@@ -27,7 +34,7 @@ app.get('/stations/crs/:crs', ({ params: { crs } }) => {
 	return searchStationByCRS(crs);
 });
 
-app.listen(4000);
+app.listen(2030);
 
 console.log(
 	`Server is running at http://${app.server?.hostname}:${app.server?.port}`

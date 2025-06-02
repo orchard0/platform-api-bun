@@ -9,6 +9,7 @@
 		"start": "NODE_ENV=production bun src/index.js"
 	},
 	"dependencies": {
+		"@elysiajs/cors": "^1.1.1",
 		"elysia": "latest",
 		"pg": "^8.13.0",
 		"pg-format": "^1.0.4"
