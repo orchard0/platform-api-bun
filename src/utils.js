@@ -1,6 +1,11 @@
 export const genDatetime = () => {
-	return new Date()
-		.toLocaleString('sv')
+	const currentDateTime = new Date();
+	return new Intl.DateTimeFormat('sv', {
+		timeZone: 'Europe/London',
+		timeStyle: 'medium',
+		dateStyle: 'short',
+	})
+		.format(currentDateTime)
 		.replace(' ', 'T')
 		.replaceAll(':', '')
 		.replaceAll('-', '');
