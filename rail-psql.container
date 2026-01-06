@@ -1,0 +1,21 @@
+[Container]
+ContainerName=rail_psql
+EnvironmentFile=.env.production
+HealthCmd=pg_isready -d $${POSTGRES_DB} -U $${POSTGRES_USER}
+HealthInterval=30s
+HealthRetries=5
+HealthStartPeriod=20s
+HealthTimeout=5s
+HostName=rail_psql
+Image=docker.io/library/postgres:16-alpine
+Network=net-rail-psql.network
+Volume=vol-rail-psql.volume:/var/lib/postgresql/data:Z
+AutoUpdate=registry
+
+[Service]
+# Restart=always
+NoNewPrivileges=true
+# TimeoutStartSec=300
+StandardOutput=journal
+StandardError=journal
+
