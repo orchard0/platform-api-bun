@@ -46,3 +46,4 @@ Reference/
 .vscode/
 bun.lockb
 **.local
+*.local.*
